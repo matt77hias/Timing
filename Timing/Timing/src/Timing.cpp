@@ -21,7 +21,7 @@ int main() {
 		sum += log(static_cast< double >(i));
 	}
 
-	const double system_delta_time = system_timer.GetSystemDeltaTime();
+	const double system_delta_time = system_timer.GetDeltaTime();
 	const double core_delta_time   = core_timer.GetCoreDeltaTimePerCore();
 
 	std::cout << "System Time = " << system_delta_time << std::endl;

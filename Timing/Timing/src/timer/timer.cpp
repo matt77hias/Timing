@@ -55,7 +55,7 @@ namespace mage {
 		UpdateLastTimestamp();
 	}
 
-	double Timer::GetSystemDeltaTime() const {
+	double Timer::GetDeltaTime() const {
 		if (m_running) {
 			UpdateDeltaTime();
 		}
@@ -63,7 +63,7 @@ namespace mage {
 		return m_time_period * static_cast< double >(m_delta_time);
 	}
 
-	double Timer::GetTotalSystemDeltaTime() const {
+	double Timer::GetTotalDeltaTime() const {
 		if (m_running) {
 			UpdateDeltaTime();
 		}
