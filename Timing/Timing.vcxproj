@@ -19,9 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Timing\src\system\parallel.hpp" />
+    <ClInclude Include="Timing\src\system\system_time.hpp" />
+    <ClInclude Include="Timing\src\system\windows.hpp" />
     <ClInclude Include="Timing\src\targetver.h" />
+    <ClInclude Include="Timing\src\timer\cpu_timer.hpp" />
+    <ClInclude Include="Timing\src\timer\timer.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Timing\src\system\parallel.cpp" />
+    <ClCompile Include="Timing\src\system\system_time.cpp" />
+    <ClCompile Include="Timing\src\timer\cpu_timer.cpp" />
+    <ClCompile Include="Timing\src\timer\timer.cpp" />
     <ClCompile Include="Timing\src\Timing.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -79,21 +88,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectName)\bin\x86\</OutDir>
     <IntDir>$(ProjectName)\tmp\x86\</IntDir>
+    <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectName)\bin\x64\</OutDir>
     <IntDir>$(ProjectName)\tmp\x64\</IntDir>
+    <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectName)\bin\x86\</OutDir>
     <IntDir>$(ProjectName)\tmp\x86\</IntDir>
+    <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectName)\bin\x64\</OutDir>
     <IntDir>$(ProjectName)\tmp\x64\</IntDir>
+    <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
