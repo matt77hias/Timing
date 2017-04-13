@@ -22,7 +22,7 @@ int main() {
 	}
 
 	const double system_delta_time = system_timer.GetSystemDeltaTime();
-	const double core_delta_time   = core_timer.GetCoreDeltaTime();
+	const double core_delta_time   = core_timer.GetCoreDeltaTimePerCore();
 
 	std::cout << "System Time = " << system_delta_time << std::endl;
 	std::cout << "Core Time  = "  << core_delta_time   << std::endl;
