@@ -16,7 +16,7 @@ int main() {
 
 	//  Perform some computation.
 	double sum = 0;
-#pragma omp parallel for reduction(+ : sum)
+#pragma omp parallel for schedule(static, 1) reduction(+ : sum)
 	for (int64_t i = 1; i <= 10000000000; ++i) {
 		sum += log(static_cast< double >(i));
 	}
