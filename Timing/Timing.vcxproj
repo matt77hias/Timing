@@ -86,26 +86,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectName)\bin\x86\</OutDir>
-    <IntDir>$(ProjectName)\tmp\x86\</IntDir>
+    <OutDir>$(ProjectName)\bin\x86\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName)\tmp\x86\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectName)\bin\x64\</OutDir>
-    <IntDir>$(ProjectName)\tmp\x64\</IntDir>
+    <OutDir>$(ProjectName)\bin\x64\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName)\tmp\x64\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectName)\bin\x86\</OutDir>
-    <IntDir>$(ProjectName)\tmp\x86\</IntDir>
+    <OutDir>$(ProjectName)\bin\x86\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName)\tmp\x86\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectName)\bin\x64\</OutDir>
-    <IntDir>$(ProjectName)\tmp\x64\</IntDir>
+    <OutDir>$(ProjectName)\bin\x64\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectName)\tmp\x64\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
