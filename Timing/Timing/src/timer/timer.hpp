@@ -24,7 +24,7 @@
 namespace mage {
 
 	/**
-	 A class of (high precision) timers.
+	 A class of (high precision) wall clock timers.
 	 */
 	class Timer final {
 
@@ -43,15 +43,15 @@ namespace mage {
 		 Constructs a timer from the given timer.
 		
 		 @param[in]		timer
-						A reference to the timer.
+						A reference to the timer to copy.
 		 */
 		Timer(const Timer &timer) = default;
 
 		/**
-		 Constructs a timer from the given timer.
+		 Constructs a timer by moving the given timer.
 
 		 @param[in]		timer
-						A reference to the timer.
+						A reference to the timer to move.
 		 */
 		Timer(Timer &&timer) = default;
 
@@ -68,18 +68,18 @@ namespace mage {
 		 Copies the given timer to this timer.
 		
 		 @param[in]		timer
-						A reference to the timer to copy from.
+						A reference to the timer to copy.
 		 @return		A reference to the copy of the given timer
 						(i.e. this timer).
 		 */
 		Timer &operator=(const Timer &timer) = default;
 
 		/**
-		 Copies the given timer to this timer.
+		 Moves the given timer to this timer.
 
 		 @param[in]		timer
-						A reference to the timer to copy from.
-		 @return		A reference to the copy of the given timer
+						A reference to the timer to move.
+		 @return		A reference to the moved timer
 						(i.e. this timer).
 		 */
 		Timer &operator=(Timer &&timer) = default;
@@ -91,48 +91,44 @@ namespace mage {
 		/**
 		 Starts this timer.
 		 */
-		void Start();
+		void Start() noexcept;
 
 		/**
 		 Stops this timer.
 		 */
-		void Stop();
+		void Stop() noexcept;
 
 		/**
 		 Restarts this timer.
 		 */
-		void Restart();
+		void Restart() noexcept;
 
 		/**
 		 Resumes this timer.
 		 */
-		void Resume();
+		void Resume() noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Methods: Delta Time
 		//---------------------------------------------------------------------
 
 		/**
-		 Returns the wall clock delta time (in seconds) 
-		 of this timer.
+		 Returns the wall clock delta time (in seconds) of this timer.
 
-		 @return		The wall clock delta time (in seconds) 
-						of this timer.
+		 @return		The wall clock delta time (in seconds) of this timer.
 		 */
-		double GetDeltaTime() const;
+		double GetDeltaTime() const noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Methods: Total Delta Time
 		//---------------------------------------------------------------------
 
 		/**
-		 Returns the total wall clock delta time (in seconds)
-		 of this timer.
+		 Returns the total wall clock delta time (in seconds) of this timer.
 
-		 @return		The total wall clock delta time (in seconds)
-						of this timer.
+		 @return		The total wall clock delta time (in seconds) of this timer.
 		 */
-		double GetTotalDeltaTime() const;
+		double GetTotalDeltaTime() const noexcept;
 
 	private:
 
@@ -143,17 +139,17 @@ namespace mage {
 		/**
 		 Updates the last timestamp of this timer.
 		 */
-		void UpdateLastTimestamp() const;
+		void UpdateLastTimestamp() const noexcept;
 
 		/**
 		 Resets the delta time, total delta time and last timestamp of this timer.
 		 */
-		void ResetDeltaTime() const;
+		void ResetDeltaTime() const noexcept;
 
 		/**
 		 Updates the delta time, total delta time and last timestamp of this timer.
 		 */
-		void UpdateDeltaTime() const;
+		void UpdateDeltaTime() const noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Variables

@@ -24,7 +24,7 @@
 namespace mage {
 
 	/**
-	 A class of cpu timers.
+	 A class of CPU timers.
 	 */
 	class CPUTimer final {
 
@@ -35,28 +35,28 @@ namespace mage {
 		//---------------------------------------------------------------------
 
 		/**
-		 Constructs a timer.
+		 Constructs a CPU timer.
 		 */
 		CPUTimer();
 
 		/**
-		 Constructs a timer from the given timer.
+		 Constructs a CPU timer from the given CPU timer.
 
 		 @param[in]		timer
-						A reference to the timer.
+						A reference to the CPU timer to copy.
 		 */
 		CPUTimer(const CPUTimer &timer) = default;
 
 		/**
-		 Constructs a timer from the given timer.
+		 Constructs a CPU timer by moving the given CPU timer.
 
 		 @param[in]		timer
-						A reference to the timer.
+						A reference to the CPU timer to move.
 		 */
 		CPUTimer(CPUTimer &&timer) = default;
 
 		/**
-		 Destructs this timer.
+		 Destructs this CPU timer.
 		 */
 		~CPUTimer() = default;
 
@@ -65,22 +65,22 @@ namespace mage {
 		//---------------------------------------------------------------------	
 
 		/**
-		 Copies the given timer to this timer.
+		 Copies the given CPU timer to this CPU timer.
 
 		 @param[in]		timer
-						A reference to the timer to copy from.
-		 @return		A reference to the copy of the given timer
-						(i.e. this timer).
+						A reference to the CPU timer to copy.
+		 @return		A reference to the copy of the given CPU timer
+						(i.e. this CPU timer).
 		 */
 		CPUTimer &operator=(const CPUTimer &timer) = default;
 
 		/**
-		 Copies the given timer to this timer.
+		 Moves the given CPU timer to this CPU timer.
 
 		 @param[in]		timer
-						A reference to the timer to copy from.
-		 @return		A reference to the copy of the given timer
-						(i.e. this timer).
+						A reference to the CPU timer to move.
+		 @return		A reference to the moved CPU timer
+						(i.e. this CPU timer).
 		 */
 		CPUTimer &operator=(CPUTimer &&timer) = default;
 
@@ -89,24 +89,24 @@ namespace mage {
 		//---------------------------------------------------------------------
 
 		/**
-		 Starts this timer.
+		 Starts this CPU timer.
 		 */
-		void Start();
+		void Start() noexcept;
 
 		/**
-		 Stops this timer.
+		 Stops this CPU timer.
 		 */
-		void Stop();
+		void Stop() noexcept;
 
 		/**
-		 Restarts this timer.
+		 Restarts this CPU timer.
 		 */
-		void Restart();
+		void Restart() noexcept;
 
 		/**
-		 Resumes this timer.
+		 Resumes this CPU timer.
 		 */
-		void Resume();
+		void Resume() noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Methods: Delta Time
@@ -114,63 +114,63 @@ namespace mage {
 
 		/**
 		 Returns the core delta time (in seconds) 
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The core delta time (in seconds) 
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetCoreDeltaTimePerCore() const {
+		double GetCoreDeltaTimePerCore() const noexcept {
 			return GetCoreDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the core delta time (in seconds) 
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The core delta time (in seconds) 
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetCoreDeltaTime() const;
+		double GetCoreDeltaTime() const noexcept;
 
 		/**
 		 Returns the kernel mode delta time (in seconds) 
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The kernel mode delta time (in seconds) 
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetKernelModeDeltaTimePerCore() const {
+		double GetKernelModeDeltaTimePerCore() const noexcept {
 			return GetKernelModeDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the kernel mode delta time (in seconds) 
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The kernel mode delta time (in seconds) 
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetKernelModeDeltaTime() const;
+		double GetKernelModeDeltaTime() const noexcept;
 
 		/**
 		 Returns the user mode delta time (in seconds) 
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The user mode delta time (in seconds) 
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetUserModeDeltaTimePerCore() const {
+		double GetUserModeDeltaTimePerCore() const noexcept {
 			return GetUserModeDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the user mode delta time (in seconds) 
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The user mode delta time (in seconds) 
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetUserModeDeltaTime() const;
+		double GetUserModeDeltaTime() const noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Methods: Total Delta Time
@@ -178,63 +178,63 @@ namespace mage {
 
 		/**
 		 Returns the total core delta time (in seconds)
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The total core delta time (in seconds)
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetTotalCoreDeltaTimePerCore() const {
+		double GetTotalCoreDeltaTimePerCore() const noexcept {
 			return GetTotalCoreDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the total core delta time (in seconds)
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The total core delta time (in seconds)
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetTotalCoreDeltaTime() const;
+		double GetTotalCoreDeltaTime() const noexcept;
 
 		/**
 		 Returns the total kernel mode delta time (in seconds)
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The total kernel mode delta time (in seconds)
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetTotalKernelModeDeltaTimePerCore() const {
+		double GetTotalKernelModeDeltaTimePerCore() const noexcept {
 			return GetTotalKernelModeDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the total kernel mode delta time (in seconds)
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The total kernel mode delta time (in seconds)
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetTotalKernelModeDeltaTime() const;
+		double GetTotalKernelModeDeltaTime() const noexcept;
 
 		/**
 		 Returns the total user mode delta time (in seconds)
-		 per processing core of this timer's process.
+		 per processing core of this CPU timer's process.
 
 		 @return		The total user mode delta time (in seconds)
-						per processing core of this timer's process.
+						per processing core of this CPU timer's process.
 		 */
-		double GetTotalUserModeDeltaTimePerCore() const {
+		double GetTotalUserModeDeltaTimePerCore() const noexcept {
 			return GetTotalUserModeDeltaTime() / m_nb_processor_cores;
 		}
 
 		/**
 		 Returns the total user mode delta time (in seconds)
-		 of this timer's process.
+		 of this CPU timer's process.
 
 		 @return		The total user mode delta time (in seconds)
-						of this timer's process.
+						of this CPU timer's process.
 		 */
-		double GetTotalUserModeDeltaTime() const;
+		double GetTotalUserModeDeltaTime() const noexcept;
 
 	private:
 
@@ -244,21 +244,21 @@ namespace mage {
 
 		/**
 		 Updates the modes' last timestamps 
-		 of this timer's process.
+		 of this CPU timer's process.
 		 */
-		void UpdateLastTimestamp() const;
+		void UpdateLastTimestamp() const noexcept;
 
 		/**
 		 Resets the modes' delta times, total delta times and last timestamps 
-		 of this timer's process.
+		 of this CPU timer's process.
 		 */
-		void ResetDeltaTime() const;
+		void ResetDeltaTime() const noexcept;
 
 		/**
 		 Updates the modes' delta times, total delta times and last timestamps 
-		 of this timer's process.
+		 of this CPU timer's process.
 		 */
-		void UpdateDeltaTime() const;
+		void UpdateDeltaTime() const noexcept;
 
 		//---------------------------------------------------------------------
 		// Member Variables
@@ -275,31 +275,31 @@ namespace mage {
 		size_t m_nb_processor_cores;
 		
 		/**
-		 The modes of this timer.
+		 An enumeration of the different modes of this CPU timer.
 		 */
-		enum { 
-			KERNEL_MODE = 0,
-			USER_MODE   = 1,
-			NB_MODES    = 2
+		enum Mode { 
+			KERNEL = 0,
+			USER   = 1,
+			COUNT  = 2
 		};
 
 		/**
-		 The modes' last timestamps of this timer's process.
+		 The modes' last timestamps of this CPU timer's process.
 		 */
-		mutable uint64_t m_last_timestamp[NB_MODES];
+		mutable uint64_t m_last_timestamp[COUNT];
 		
 		/**
-		 The modes' delta times (in seconds) of this timer's process.
+		 The modes' delta times (in seconds) of this CPU timer's process.
 		 */
-		mutable uint64_t m_delta_time[NB_MODES];
+		mutable uint64_t m_delta_time[COUNT];
 
 		/**
-		 The modes' total delta times (in seconds) of this timer's process.
+		 The modes' total delta times (in seconds) of this CPU timer's process.
 		 */
-		mutable uint64_t m_total_delta_time[NB_MODES];
+		mutable uint64_t m_total_delta_time[COUNT];
 
 		/**
-		 Flag indicating whether this timer is running.
+		 Flag indicating whether this CPU timer is running.
 		 */
 		bool m_running;
 
@@ -308,7 +308,7 @@ namespace mage {
 		//---------------------------------------------------------------------
 
 		/**
-		 The time period.
+		 The time period of CPU timers.
 		 */
 		static const double time_period;
 	};
