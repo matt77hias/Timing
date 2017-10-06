@@ -7,5 +7,5 @@ This project is a derivative of [MAGE](https://github.com/matt77hias/MAGE) (whic
 
 ## Development
 * **Platform**: (minimum) Windows 8.1 32 Bit and 64 Bit (Windows API)
-* **Compiler**: MSVC++ 14.0
+* **Compiler**: MSVC++ 15.0
 * **IDE**: Visual Studio 2017
