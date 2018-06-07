@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #pragma region
 
-#include "system\windows.hpp"
+#include "type\types.hpp"
 
 #pragma endregion
 
@@ -14,61 +14,110 @@
 //-----------------------------------------------------------------------------
 #pragma region
 
-#include <stdint.h>
+#include <chrono>
 
 #pragma endregion
 
 //-----------------------------------------------------------------------------
-// Declarations
+// Declarations and Definitions
 //-----------------------------------------------------------------------------
 namespace mage {
 
-	/**
-	 Returns the current system timestamp (in 100 ns).
+	//-------------------------------------------------------------------------
+	// System Time
+	//-------------------------------------------------------------------------
+	#pragma region
 
-	 @return		The current system timestamp (in 100 ns).
-	 */
-	uint64_t GetCurrentSystemTimestamp() noexcept;
+	struct SystemClock final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< SystemClock >;
 
-	/**
-	 Returns the current core timestamp (in 100 ns).
+		static constexpr bool is_steady = true;
 
-	 @pre			@a handle_process is not equal to @c nullptr.
-	 @pre			@a kernel_mode_timestamp is not equal to @c nullptr.
-	 @pre			@a user_mode_timestamp is not equal to @c nullptr.
-	 @pre			@a handle_process must have the @c PROCESS_QUERY_INFORMATION 
-					or @c PROCESS_QUERY_LIMITED_INFORMATION access right.
-	 @param[in]		handle_process
-					A handle to the process whose timing information is sought.
-	 @param[out]	kernel_mode_timestamp
-					A pointer to the current kernel mode timestamp
-					of the given process.
-	 @param[out]	user_mode_timestamp
-					A pointer to the current user mode timestamp
-					of the given process.
-	 @note			If the retrieval fails, both @a kernel_mode_timestamp
-					and @a user_mode_timestamp point to zero.
-					To get extended error information, call GetLastError.
-	 */
-	void GetCurrentCoreTimestamp(HANDLE handle_process,
-		uint64_t *kernel_mode_timestamp, uint64_t *user_mode_timestamp) noexcept;
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
 
-	/**
-	 Returns the current core timestamp (in 100 ns).
+	#pragma endregion
 
-	 @pre			@a kernel_mode_timestamp is not equal to @c nullptr.
-	 @pre			@a user_mode_timestamp is not equal to @c nullptr.
-	 @param[out]	kernel_mode_timestamp
-					A pointer to the current kernel mode timestamp
-					of the calling process.
-	 @param[out]	user_mode_timestamp
-					A pointer to the current user mode timestamp
-					of the calling process.
-	 @note			If the retrieval fails, both @a kernel_mode_timestamp
-					and @a user_mode_timestamp point to zero.
-					To get extended error information, call GetLastError.
-	 */
-	inline void GetCurrentCoreTimestamp(uint64_t *kernel_mode_timestamp, uint64_t *user_mode_timestamp) noexcept {
-		GetCurrentCoreTimestamp(GetCurrentProcess(), kernel_mode_timestamp, user_mode_timestamp);
-	}
+	//-------------------------------------------------------------------------
+	// Core Time
+	//-------------------------------------------------------------------------
+	#pragma region
+
+	struct CoreClock final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< CoreClock >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	struct KernelModeCoreClock final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< KernelModeCoreClock >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	struct UserModeCoreClock final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< UserModeCoreClock >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	struct CoreClockPerCore final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< CoreClockPerCore >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	struct KernelModeCoreClockPerCore final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< KernelModeCoreClockPerCore >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	struct UserModeCoreClockPerCore final {
+		using rep        = U64;
+		using period     = std::ratio< 1, 10'000'000 >;
+		using duration   = std::chrono::duration< rep, period >;
+		using time_point = std::chrono::time_point< UserModeCoreClockPerCore >;
+
+		static constexpr bool is_steady = true;
+
+		[[nodiscard]]
+		static const time_point now() noexcept;
+	};
+
+	#pragma endregion
 }
