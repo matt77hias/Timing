@@ -1,3 +1,9 @@
+[![Build status][s1]][av]
+
+[s1]: https://ci.appveyor.com/api/projects/status/7iewo12knry966xn?svg=true
+
+[av]: https://ci.appveyor.com/project/matt77hias/Timing
+
 # Timing
 
 ## About
