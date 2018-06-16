@@ -1,8 +1,10 @@
-[![Build status][s1]][av]
+[![Build status][s1]][av] [![License][s2]][li]
 
 [s1]: https://ci.appveyor.com/api/projects/status/7iewo12knry966xn?svg=true
+[s2]: https://img.shields.io/badge/license-GPL%203.0-blue.svg
 
 [av]: https://ci.appveyor.com/project/matt77hias/Timing
+[li]: https://raw.githubusercontent.com/matt77hias/Timing/master/LICENSE.txt
 
 # Timing
 
