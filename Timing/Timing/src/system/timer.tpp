@@ -50,9 +50,7 @@ namespace mage {
 	}
 
 	template< typename ClockT >
-	inline TimeIntervalSeconds Timer< ClockT >
-		::GetDeltaTime() noexcept {
-
+	inline TimeIntervalSeconds Timer< ClockT >::GetDeltaTime() noexcept {
 		if (m_running) {
 			UpdateDeltaTime();
 		}
@@ -61,9 +59,7 @@ namespace mage {
 	}
 
 	template< typename ClockT >
-	inline TimeIntervalSeconds Timer< ClockT >
-		::GetTotalDeltaTime() noexcept {
-
+	inline TimeIntervalSeconds Timer< ClockT >::GetTotalDeltaTime() noexcept {
 		if (m_running) {
 			UpdateDeltaTime();
 		}
