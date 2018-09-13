@@ -1,7 +1,21 @@
-#include <math.h>
-#include <iostream>
+//-----------------------------------------------------------------------------
+// Includes
+//-----------------------------------------------------------------------------
+#pragma region
 
 #include "system\timer.hpp"
+
+#pragma endregion
+
+//-----------------------------------------------------------------------------
+// System Includes
+//-----------------------------------------------------------------------------
+#pragma region
+
+#include <cmath>
+#include <iostream>
+
+#pragma endregion
 
 int main() {
 
@@ -12,10 +26,10 @@ int main() {
 	cpu_timer.Start();
 
 	//  Perform some computation.
-	double sum = 0;
+	double sum = 0.0;
 	#pragma omp parallel for schedule(static, 1) reduction(+ : sum)
-	for (int64_t i = 1; i <= 10000000000; ++i) {
-		sum += log(static_cast< double >(i));
+	for (int64_t i = 0; i < 10000000000; ++i) {
+		sum += std::log(static_cast< double >(i));
 	}
 
 	const auto wall_clock_time = wall_clock_timer.GetDeltaTime();
@@ -23,4 +37,6 @@ int main() {
 
 	std::cout << "System Time = " << wall_clock_time.count() << std::endl;
 	std::cout << "Core Time  = "  << cpu_time.count()        << std::endl;
+
+	return 0;
 }

@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #pragma region
 
-#include "type\types.hpp"
+#include "type\scalar_types.hpp"
 
 #pragma endregion
 
@@ -28,7 +28,7 @@ namespace mage {
 	//-------------------------------------------------------------------------
 	#pragma region
 
-	struct SystemClock final {
+	struct SystemClock {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -47,7 +47,7 @@ namespace mage {
 	//-------------------------------------------------------------------------
 	#pragma region
 
-	struct CoreClock final {
+	struct CoreClock {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -59,7 +59,7 @@ namespace mage {
 		static const time_point now() noexcept;
 	};
 
-	struct KernelModeCoreClock final {
+	struct KernelModeCoreClock {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -71,7 +71,7 @@ namespace mage {
 		static const time_point now() noexcept;
 	};
 
-	struct UserModeCoreClock final {
+	struct UserModeCoreClock {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -83,7 +83,7 @@ namespace mage {
 		static const time_point now() noexcept;
 	};
 
-	struct CoreClockPerCore final {
+	struct CoreClockPerCore {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -95,7 +95,7 @@ namespace mage {
 		static const time_point now() noexcept;
 	};
 
-	struct KernelModeCoreClockPerCore final {
+	struct KernelModeCoreClockPerCore {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -107,7 +107,7 @@ namespace mage {
 		static const time_point now() noexcept;
 	};
 
-	struct UserModeCoreClockPerCore final {
+	struct UserModeCoreClockPerCore {
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;

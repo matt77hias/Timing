@@ -32,12 +32,6 @@
     <ClInclude Include="Timing\src\type\scalar_types.hpp">
       <Filter>Header Files\type</Filter>
     </ClInclude>
-    <ClInclude Include="Timing\src\type\types.hpp">
-      <Filter>Header Files\type</Filter>
-    </ClInclude>
-    <ClInclude Include="Timing\src\targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Timing\src\system\timer.tpp">

@@ -96,6 +96,7 @@ namespace mage {
 						timestamp are zero. To get extended error information, 
 						call @c GetLastError.
 		 */
+		[[nodiscard]]
 		const std::pair< U64, U64 > GetCoreTimestamps() noexcept {
 			FILETIME ftime;
 			FILETIME kernel_mode_ftime;
@@ -115,14 +116,14 @@ namespace mage {
 												&ftime, 
 												&kernel_mode_ftime, 
 												&user_mode_ftime);
-		
-			if (TRUE == result) {
-				return { ConvertTimestamp(kernel_mode_ftime), 
-					     ConvertTimestamp(user_mode_ftime) };
-			}
-			else {
+			if (FALSE == result) {
 				return {};
 			}
+			
+			return { 
+				ConvertTimestamp(kernel_mode_ftime),  
+				ConvertTimestamp(user_mode_ftime) 
+			};
 		}
 
 		/**
