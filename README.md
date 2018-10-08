@@ -1,9 +1,11 @@
-[![Build status][s1]][av] [![License][s2]][li]
+[![Build status][s1]][av] [![Code Quality][s2]][co] [![License][s3]][li]
 
 [s1]: https://ci.appveyor.com/api/projects/status/7iewo12knry966xn?svg=true
-[s2]: https://img.shields.io/badge/license-GPL%203.0-blue.svg
+[s2]: https://api.codacy.com/project/badge/Grade/a550028075584736a98c79d33c5c6b21
+[s3]: https://img.shields.io/badge/license-GPL%203.0-blue.svg
 
 [av]: https://ci.appveyor.com/project/matt77hias/Timing
+[co]: https://www.codacy.com/app/matt77hias/Timing?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=matt77hias/Timing&amp;utm_campaign=Badge_Grade
 [li]: https://raw.githubusercontent.com/matt77hias/Timing/master/LICENSE.txt
 
 # Timing
