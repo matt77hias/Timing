@@ -19,24 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Timing\src\system\system_time.hpp" />
-    <ClInclude Include="Timing\src\system\timer.hpp" />
-    <ClInclude Include="Timing\src\system\windows.hpp" />
-    <ClInclude Include="Timing\src\type\scalar_types.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Timing\src\system\timer.tpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Timing\src\system\system_time.cpp" />
+    <ClCompile Include="Timing\src\System\SystemTime.cpp" />
     <ClCompile Include="Timing\src\Timing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Timing\src\System\SystemTime.hpp" />
+    <ClInclude Include="Timing\src\System\Timer.hpp" />
+    <ClInclude Include="Timing\src\System\Windows.hpp" />
+    <ClInclude Include="Timing\src\Type\ScalarTypes.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Timing\src\System\Timer.tpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{33C20059-0443-4297-B848-BF38A99812A0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Timing</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -113,7 +113,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
@@ -121,7 +120,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

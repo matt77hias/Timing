@@ -3,21 +3,29 @@
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
-#pragma region
 
-#include "system\system_time.hpp"
+// CoreClockPerCore
+#include <System/SystemTime.hpp>
+// F64
+#include <Type/ScalarTypes.hpp>
 
-#pragma endregion
+//-----------------------------------------------------------------------------
+// External Includes
+//-----------------------------------------------------------------------------
+
+// duration, duration_cast, high_resolution_clock
+#include <chrono>
+// pair
+#include <utility>
 
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace mage {
-
+namespace mage
+{
 	//-------------------------------------------------------------------------
 	// Time
 	//-------------------------------------------------------------------------
-	#pragma region
 
 	/**
 	 A time stamp type expressed in seconds.
@@ -29,12 +37,9 @@ namespace mage {
 	 */
 	using TimeIntervalSeconds = std::chrono::duration< F64 >;
 
-	#pragma endregion
-
 	//-------------------------------------------------------------------------
 	// Timer
 	//-------------------------------------------------------------------------
-	#pragma region
 
 	/**
 	 A class of timers.
@@ -43,7 +48,8 @@ namespace mage {
 					The clock type.
 	 */
 	template< typename ClockT >
-	class Timer {
+	class Timer
+	{
 
 	public:
 
@@ -58,7 +64,7 @@ namespace mage {
 
 		/**
 		 Constructs a timer from the given timer.
-		
+
 		 @param[in]		timer
 						A reference to the timer to copy.
 		 */
@@ -79,14 +85,14 @@ namespace mage {
 
 		//---------------------------------------------------------------------
 		// Assignment Operators
-		//---------------------------------------------------------------------	
+		//---------------------------------------------------------------------
 
 		/**
 		 Copies the given timer to this timer.
-		
+
 		 @param[in]		timer
 						A reference to the timer to copy.
-		 @return		A reference to the copy of the given timer (i.e. this 
+		 @return		A reference to the copy of the given timer (i.e. this
 						timer).
 		 */
 		Timer& operator=(const Timer& timer) noexcept = default;
@@ -131,25 +137,33 @@ namespace mage {
 		/**
 		 Returns the delta time (in seconds) of this timer.
 
+		 @tparam		TimeIntervalT
+						The time interval type.
 		 @return		The delta time (in seconds) of this timer.
 		 */
-		TimeIntervalSeconds GetDeltaTime() noexcept;
+		template< typename TimeIntervalT >
+		TimeIntervalT GetDeltaTime() noexcept;
 
 		/**
 		 Returns the total delta time (in seconds) of this timer.
 
+		 @tparam		TimeIntervalT
+						The time interval type.
 		 @return		The total delta time (in seconds) of this timer.
 		 */
-		TimeIntervalSeconds GetTotalDeltaTime() noexcept;
+		template< typename TimeIntervalT >
+		TimeIntervalT GetTotalDeltaTime() noexcept;
 
 		/**
 		 Returns the delta and total delta time (in seconds) of this timer.
 
-		 @return		A pair containing the the delta and total delta time 
+		 @tparam		TimeIntervalT
+						The time interval type.
+		 @return		A pair containing the the delta and total delta time
 						(in seconds) of this timer.
 		 */
-		const std::pair< TimeIntervalSeconds, TimeIntervalSeconds >  
-			GetTime() noexcept;
+		template< typename TimeIntervalT >
+		std::pair< TimeIntervalT, TimeIntervalT > GetTime() noexcept;
 
 	private:
 
@@ -158,13 +172,13 @@ namespace mage {
 		//---------------------------------------------------------------------
 
 		/**
-		 Resets the delta time, total delta time and last timestamp of this 
+		 Resets the delta time, total delta time and last timestamp of this
 		 timer.
 		 */
 		void ResetDeltaTime() noexcept;
 
 		/**
-		 Updates the delta time, total delta time and last timestamp of this 
+		 Updates the delta time, total delta time and last timestamp of this
 		 timer.
 		 */
 		void UpdateDeltaTime() noexcept;
@@ -179,7 +193,7 @@ namespace mage {
 		using TimeStamp = typename ClockT::time_point;
 
 		/**
-		 The time interval type representing the interval between time points 
+		 The time interval type representing the interval between time points
 		 of timers.
 		 */
 		using TimeInterval = typename ClockT::duration;
@@ -214,12 +228,9 @@ namespace mage {
 		bool m_running;
 	};
 
-	#pragma endregion
-
 	//-------------------------------------------------------------------------
 	// Type Declarations and Definitions
 	//-------------------------------------------------------------------------
-	#pragma region
 
 	/**
 	 A class of wall clock timers.
@@ -230,15 +241,9 @@ namespace mage {
 	 A class of CPU (i.e. core clock per core) timers.
 	 */
 	using CPUTimer = Timer< CoreClockPerCore >;
-
-	#pragma endregion
 }
 
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
-#pragma region
-
-#include "system\timer.tpp"
-
-#pragma endregion
+#include <System/Timer.tpp>

@@ -3,32 +3,30 @@
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
-#pragma region
 
-#include "type\scalar_types.hpp"
-
-#pragma endregion
+// U16, U64
+#include <Type/ScalarTypes.hpp>
 
 //-----------------------------------------------------------------------------
-// System Includes
+// External Includes
 //-----------------------------------------------------------------------------
-#pragma region
 
+// duration, time_point
 #include <chrono>
-
-#pragma endregion
+// ratio
+#include <ratio>
 
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------
-namespace mage {
-
+namespace mage
+{
 	//-------------------------------------------------------------------------
 	// System Time
 	//-------------------------------------------------------------------------
-	#pragma region
 
-	struct SystemClock {
+	struct SystemClock
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -37,17 +35,15 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
-
-	#pragma endregion
 
 	//-------------------------------------------------------------------------
 	// Core Time
 	//-------------------------------------------------------------------------
-	#pragma region
 
-	struct CoreClock {
+	struct CoreClock
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -56,10 +52,11 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
 
-	struct KernelModeCoreClock {
+	struct KernelModeCoreClock
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -68,10 +65,11 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
 
-	struct UserModeCoreClock {
+	struct UserModeCoreClock
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -80,10 +78,11 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
 
-	struct CoreClockPerCore {
+	struct CoreClockPerCore
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -92,10 +91,11 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
 
-	struct KernelModeCoreClockPerCore {
+	struct KernelModeCoreClockPerCore
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -104,10 +104,11 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
 
-	struct UserModeCoreClockPerCore {
+	struct UserModeCoreClockPerCore
+	{
 		using rep        = U64;
 		using period     = std::ratio< 1, 10'000'000 >;
 		using duration   = std::chrono::duration< rep, period >;
@@ -116,8 +117,6 @@ namespace mage {
 		static constexpr bool is_steady = true;
 
 		[[nodiscard]]
-		static const time_point now() noexcept;
+		static time_point now() noexcept;
 	};
-
-	#pragma endregion
 }
