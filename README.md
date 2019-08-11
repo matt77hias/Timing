@@ -18,5 +18,3 @@ This project is a derivative of [MAGE](https://github.com/matt77hias/MAGE) (whic
 ## Development
 * **Platform**: Windows 10 32 Bit and 64 Bit (Windows API)
 * **Programming Language**: ISO C++ Latest Draft Standard (> C++17)
-* **Compiler**: MSVC++ 16.0.1
-* **IDE**: Visual Studio 2019
