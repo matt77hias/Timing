@@ -16,7 +16,7 @@ platform:
   - x86
 environment:
   matrix:
-  - solution_name: "../IDE/VS/Timing.sln"
+  - solution_name: Timing/IDE/VS/Timing.sln
 
 ###############################################################################
 # Build Configuration
