@@ -3,16 +3,16 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir>$(ProjectName)\bin\x64\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectName)\tmp\x64\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectName)\src\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>..\..\Bin\x64\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>..\..\Build\x64\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
+      <AdditionalIncludeDirectories>..\..\Code\;</AdditionalIncludeDirectories>
       <WarningLevel>Level4</WarningLevel>
-	  <SDLCheck>true</SDLCheck>
-      <Optimization>Full</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -20,19 +20,16 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <XMLDocumentationFileName>$(ProjectName)\doc\</XMLDocumentationFileName>
+      <XMLDocumentationFileName />
       <FloatingPointModel>Fast</FloatingPointModel>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
-	<Link>
+    <Link>
       <OptimizeReferences>true</OptimizeReferences>
-	  <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
     </Link>
-    <Xdcmake>
-      <OutputFile>$(ProjectName)\doc\$(TargetName).xml</OutputFile>
-    </Xdcmake>
   </ItemDefinitionGroup>
 </Project>

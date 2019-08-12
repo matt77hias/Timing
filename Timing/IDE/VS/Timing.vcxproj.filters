@@ -20,29 +20,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Timing\src\Timing.cpp">
+    <ClCompile Include="..\..\Code\Timing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Timing\src\System\SystemTime.cpp">
+    <ClCompile Include="..\..\Code\System\SystemTime.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Timing\src\System\SystemTime.hpp">
-      <Filter>Header Files\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Timing\src\System\Timer.hpp">
-      <Filter>Header Files\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Timing\src\System\Windows.hpp">
-      <Filter>Header Files\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Timing\src\Type\ScalarTypes.hpp">
+    <ClInclude Include="..\..\Code\Type\ScalarTypes.hpp">
       <Filter>Header Files\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\System\SystemTime.hpp">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\System\Timer.hpp">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Code\System\Windows.hpp">
+      <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Timing\src\System\Timer.tpp">
+    <None Include="..\..\Code\System\Timer.tpp">
       <Filter>Header Files\System</Filter>
     </None>
   </ItemGroup>

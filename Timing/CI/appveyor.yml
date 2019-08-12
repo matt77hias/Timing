@@ -1,7 +1,7 @@
 ###############################################################################
 # General Configuration
 ###############################################################################
-version: 3.1.{build}
+version: 4.0.{build}
 
 ###############################################################################
 # Environment Configuration
@@ -9,11 +9,14 @@ version: 3.1.{build}
 image: Visual Studio 2019
 
 configuration: 
- - Release
- - Debug
+  - Release
+  - Debug
 platform: 
   - x64
   - x86
+environment:
+  matrix:
+  - solution_name: ../IDE/VS/Timing.sln
 
 ###############################################################################
 # Build Configuration
@@ -21,3 +24,6 @@ platform:
 build:
   parallel: true
   verbosity: normal
+
+build_script:
+  - msbuild %solution_name%

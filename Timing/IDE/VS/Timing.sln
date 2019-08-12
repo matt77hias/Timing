@@ -19,10 +19,13 @@ Global
 		{33C20059-0443-4297-B848-BF38A99812A0}.Debug|x86.Build.0 = Debug|Win32
 		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x64.ActiveCfg = Release|x64
 		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x64.Build.0 = Release|x64
-		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x86.ActiveCfg = Release|x64
-		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x86.Build.0 = Release|x64
+		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x86.ActiveCfg = Release|Win32
+		{33C20059-0443-4297-B848-BF38A99812A0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFE57B1C-CEEE-4EE6-ABDF-7E086F26AEEA}
 	EndGlobalSection
 EndGlobal
