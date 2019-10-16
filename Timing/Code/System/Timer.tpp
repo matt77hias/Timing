@@ -59,7 +59,7 @@ namespace mage
 
 	template< typename ClockT >
 	template< typename TimeIntervalT >
-	inline TimeIntervalT Timer< ClockT >::GetDeltaTime() noexcept
+	inline TimeIntervalT Timer< ClockT >::DeltaTime() noexcept
 	{
 		if (m_running)
 		{
@@ -71,7 +71,7 @@ namespace mage
 
 	template< typename ClockT >
 	template< typename TimeIntervalT >
-	inline TimeIntervalT Timer< ClockT >::GetTotalDeltaTime() noexcept
+	inline TimeIntervalT Timer< ClockT >::TotalDeltaTime() noexcept
 	{
 		if (m_running)
 		{
@@ -84,7 +84,7 @@ namespace mage
 	template< typename ClockT >
 	template< typename TimeIntervalT >
 	inline std::pair< TimeIntervalT, TimeIntervalT >
-		Timer< ClockT >::GetTime() noexcept
+		Timer< ClockT >::Time() noexcept
 	{
 		if (m_running)
 		{
