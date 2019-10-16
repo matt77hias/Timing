@@ -142,7 +142,7 @@ namespace mage
 		 @return		The delta time (in seconds) of this timer.
 		 */
 		template< typename TimeIntervalT >
-		TimeIntervalT GetDeltaTime() noexcept;
+		TimeIntervalT DeltaTime() noexcept;
 
 		/**
 		 Returns the total delta time (in seconds) of this timer.
@@ -152,7 +152,7 @@ namespace mage
 		 @return		The total delta time (in seconds) of this timer.
 		 */
 		template< typename TimeIntervalT >
-		TimeIntervalT GetTotalDeltaTime() noexcept;
+		TimeIntervalT TotalDeltaTime() noexcept;
 
 		/**
 		 Returns the delta and total delta time (in seconds) of this timer.
@@ -163,7 +163,7 @@ namespace mage
 						(in seconds) of this timer.
 		 */
 		template< typename TimeIntervalT >
-		std::pair< TimeIntervalT, TimeIntervalT > GetTime() noexcept;
+		std::pair< TimeIntervalT, TimeIntervalT > Time() noexcept;
 
 	private:
 
@@ -240,7 +240,7 @@ namespace mage
 	/**
 	 A class of CPU (i.e. core clock per core) timers.
 	 */
-	using CPUTimer = Timer< CoreClockPerCore >;
+	using CpuTimer = Timer< CoreClockPerCore >;
 }
 
 //-----------------------------------------------------------------------------
