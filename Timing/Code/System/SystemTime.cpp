@@ -11,8 +11,8 @@
 // External Includes
 //-----------------------------------------------------------------------------
 
-// size_t, wchar_t
-#include <cwchar>
+// size_t
+#include <cstddef>
 // size
 #include <iterator>
 // pair
