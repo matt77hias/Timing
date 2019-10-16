@@ -2,7 +2,7 @@
 // Includes
 //-----------------------------------------------------------------------------
 
-// CPUTimer, WallClockTimer
+// CpuTimer, WallClockTimer
 #include <System/Timer.hpp>
 
 //-----------------------------------------------------------------------------
@@ -20,7 +20,7 @@
 int main()
 {
 	mage::WallClockTimer wall_clock_timer;
-	mage::CPUTimer cpu_timer;
+	mage::CpuTimer cpu_timer;
 
 	wall_clock_timer.Start();
 	cpu_timer.Start();
@@ -36,9 +36,9 @@ int main()
 	using mage::TimeIntervalSeconds;
 
 	const auto wall_clock_time 
-		= wall_clock_timer.GetDeltaTime< TimeIntervalSeconds >();
+		= wall_clock_timer.DeltaTime< TimeIntervalSeconds >();
 	const auto cpu_time 
-		= cpu_timer.GetDeltaTime< TimeIntervalSeconds >();
+		= cpu_timer.DeltaTime< TimeIntervalSeconds >();
 
 	std::cout << "System Time = " << wall_clock_time.count() << std::endl;
 	std::cout << "Core   Time = " << cpu_time.count()        << std::endl;
