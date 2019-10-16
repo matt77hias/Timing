@@ -6,15 +6,6 @@
 namespace mage
 {
 	template< typename ClockT >
-	Timer< ClockT >::Timer() noexcept
-		: m_clock(),
-		m_last_timestamp(TimeStamp::min()),
-		m_delta_time(TimeInterval::zero()),
-		m_total_delta_time(TimeInterval::zero()),
-		m_running(false)
-	{}
-
-	template< typename ClockT >
 	inline void Timer< ClockT >::Start() noexcept
 	{
 		if (m_running)
