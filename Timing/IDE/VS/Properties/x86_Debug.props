@@ -18,6 +18,7 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <UseFullPaths>false</UseFullPaths>
     </ClCompile>
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
