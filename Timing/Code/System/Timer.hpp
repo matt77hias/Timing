@@ -60,7 +60,7 @@ namespace mage
 		/**
 		 Constructs a timer.
 		 */
-		Timer() noexcept;
+		Timer() noexcept = default;
 
 		/**
 		 Constructs a timer from the given timer.
@@ -205,27 +205,27 @@ namespace mage
 		/**
 		 The clock of this timer.
 		 */
-		ClockT m_clock;
+		ClockT m_clock = {};
 
 		/**
 		 The last timestamp of this timer.
 		 */
-		TimeStamp m_last_timestamp;
+		TimeStamp m_last_timestamp = TimeStamp::min();
 
 		/**
 		 The delta time of this timer.
 		 */
-		TimeInterval m_delta_time;
+		TimeInterval m_delta_time = TimeInterval::zero();
 
 		/**
 		 The total delta time of this timer.
 		 */
-		TimeInterval m_total_delta_time;
+		TimeInterval m_total_delta_time = TimeInterval::zero();
 
 		/**
 		 Flag indicating whether this timer is running.
 		 */
-		bool m_running;
+		bool m_running = false;
 	};
 
 	//-------------------------------------------------------------------------
