@@ -4,7 +4,8 @@
 
 // Declarations
 #include <System/SystemTime.hpp>
-// FileTimeToLocalFileTime, GetProcessTimes, GetSystemTimeAsFileTime
+// FileTimeToLocalFileTime, GetProcessTimes, GetSystemInfo,
+// GetSystemTimeAsFileTime
 #include <System/Windows.hpp>
 
 //-----------------------------------------------------------------------------
@@ -29,22 +30,22 @@ namespace mage
 	namespace
 	{
 		[[nodiscard]]
-		inline FILETIME GetFileTime() noexcept
+		inline FILETIME FileTime() noexcept
 		{
 			// Retrieves the current system date and time.
 			// The information is in Coordinated Universal Time (UTC) format.
 			FILETIME file_time;
-			GetSystemTimeAsFileTime(&file_time);
+			::GetSystemTimeAsFileTime(&file_time);
 			return file_time;
 		}
 
 		[[nodiscard]]
-		inline FILETIME GetLocalFileTime() noexcept
+		inline FILETIME LocalFileTime() noexcept
 		{
-			const auto file_time = GetFileTime();
+			const auto file_time = FileTime();
 			FILETIME local_file_time;
 			if (FALSE == 
-				FileTimeToLocalFileTime(&file_time, &local_file_time))
+				::FileTimeToLocalFileTime(&file_time, &local_file_time))
 			{
 				return {};
 			}
@@ -72,7 +73,7 @@ namespace mage
 	[[nodiscard]]
 	auto SystemClock::now() noexcept -> time_point
 	{
-		return time_point(duration(ConvertTimestamp(GetLocalFileTime())));
+		return time_point(duration(ConvertTimestamp(LocalFileTime())));
 	}
 
 	//-------------------------------------------------------------------------
@@ -89,7 +90,7 @@ namespace mage
 		std::size_t NumberOfSystemCores() noexcept
 		{
 			SYSTEM_INFO system_info = {};
-			GetSystemInfo(&system_info);
+			::GetSystemInfo(&system_info);
 			
 			// Return the number of logical processors in the current group.
 			return system_info.dwNumberOfProcessors;
@@ -105,27 +106,28 @@ namespace mage
 						call @c GetLastError.
 		 */
 		[[nodiscard]]
-		std::pair< U64, U64 > GetCoreTimestamps() noexcept
+		std::pair< U64, U64 > CoreTimestamps() noexcept
 		{
 			FILETIME ftime;
 			FILETIME kernel_mode_ftime;
 			FILETIME user_mode_ftime;
 			// Retrieve timing information for the process.
-			const BOOL result = GetProcessTimes(GetCurrentProcess(),
-												&ftime,
-												&ftime,
-												&kernel_mode_ftime,
-												&user_mode_ftime);
-			if (FALSE == result)
+			if (FALSE == ::GetProcessTimes(GetCurrentProcess(),
+										   &ftime,
+										   &ftime,
+										   &kernel_mode_ftime,
+										   &user_mode_ftime))
 			{
 				return {};
 			}
-
-			return 
+			else
 			{
-				ConvertTimestamp(kernel_mode_ftime),
-				ConvertTimestamp(user_mode_ftime)
-			};
+				return
+				{
+					ConvertTimestamp(kernel_mode_ftime),
+					ConvertTimestamp(user_mode_ftime)
+				};
+			}
 		}
 
 		/**
@@ -134,9 +136,9 @@ namespace mage
 		 @return		The current core timestamp of the calling process.
 		 */
 		[[nodiscard]]
-		inline U64 GetCoreTimestamp() noexcept
+		inline U64 CoreTimestamp() noexcept
 		{
-			const auto timestamps = GetCoreTimestamps();
+			const auto timestamps = CoreTimestamps();
 			return timestamps.first + timestamps.second;
 		}
 
@@ -147,9 +149,9 @@ namespace mage
 						process.
 		 */
 		[[nodiscard]]
-		inline U64 GetKernelModeCoreTimestamp() noexcept
+		inline U64 KernelModeCoreTimestamp() noexcept
 		{
-			const auto timestamps = GetCoreTimestamps();
+			const auto timestamps = CoreTimestamps();
 			return timestamps.first;
 		}
 
@@ -160,9 +162,9 @@ namespace mage
 						process.
 		 */
 		[[nodiscard]]
-		inline U64 GetUserModeCoreTimestamp() noexcept
+		inline U64 UserModeCoreTimestamp() noexcept
 		{
-			const auto timestamps = GetCoreTimestamps();
+			const auto timestamps = CoreTimestamps();
 			return timestamps.second;
 		}
 
@@ -173,10 +175,10 @@ namespace mage
 						system core.
 		 */
 		[[nodiscard]]
-		inline U64 GetCoreTimestampPerCore() noexcept
+		inline U64 CoreTimestampPerCore() noexcept
 		{
 			static const auto s_system_core_count = NumberOfSystemCores();
-			return GetCoreTimestamp() / s_system_core_count;
+			return CoreTimestamp() / s_system_core_count;
 		}
 
 		/**
@@ -186,10 +188,10 @@ namespace mage
 						process per system core.
 		 */
 		[[nodiscard]]
-		inline U64 GetKernelModeCoreTimestampPerCore() noexcept
+		inline U64 KernelModeCoreTimestampPerCore() noexcept
 		{
 			static const auto s_system_core_count = NumberOfSystemCores();
-			return GetKernelModeCoreTimestamp() / s_system_core_count;
+			return KernelModeCoreTimestamp() / s_system_core_count;
 		}
 
 		/**
@@ -199,46 +201,46 @@ namespace mage
 						process per system core.
 		 */
 		[[nodiscard]]
-		inline U64 GetUserModeCoreTimestampPerCore() noexcept
+		inline U64 UserModeCoreTimestampPerCore() noexcept
 		{
 			static const auto s_system_core_count = NumberOfSystemCores();
-			return GetUserModeCoreTimestamp() / s_system_core_count;
+			return UserModeCoreTimestamp() / s_system_core_count;
 		}
 	}
 
 	[[nodiscard]]
 	auto CoreClock::now() noexcept -> time_point
 	{
-		return time_point(duration(GetCoreTimestamp()));
+		return time_point(duration(CoreTimestamp()));
 	}
 
 	[[nodiscard]]
 	auto KernelModeCoreClock::now() noexcept -> time_point
 	{
-		return time_point(duration(GetKernelModeCoreTimestamp()));
+		return time_point(duration(KernelModeCoreTimestamp()));
 	}
 
 	[[nodiscard]]
 	auto UserModeCoreClock::now() noexcept -> time_point
 	{
-		return time_point(duration(GetUserModeCoreTimestamp()));
+		return time_point(duration(UserModeCoreTimestamp()));
 	}
 
 	[[nodiscard]]
 	auto CoreClockPerCore::now() noexcept -> time_point
 	{
-		return time_point(duration(GetCoreTimestampPerCore()));
+		return time_point(duration(CoreTimestampPerCore()));
 	}
 
 	[[nodiscard]]
 	auto KernelModeCoreClockPerCore::now() noexcept -> time_point
 	{
-		return time_point(duration(GetKernelModeCoreTimestampPerCore()));
+		return time_point(duration(KernelModeCoreTimestampPerCore()));
 	}
 
 	[[nodiscard]]
 	auto UserModeCoreClockPerCore::now() noexcept -> time_point
 	{
-		return time_point(duration(GetUserModeCoreTimestampPerCore()));
+		return time_point(duration(UserModeCoreTimestampPerCore()));
 	}
 }
