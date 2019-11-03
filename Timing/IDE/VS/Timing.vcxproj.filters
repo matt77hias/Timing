@@ -7,7 +7,7 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;tpp;hxx;hm;inl;inc;xsd;tpp</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;tpp</Extensions>
     </Filter>
     <Filter Include="Header Files\System">
       <UniqueIdentifier>{061a5c0b-a112-4f54-8dbf-c625c3c516a7}</UniqueIdentifier>
@@ -42,7 +42,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Code\System\Timer.tpp">
+    <None Include="..\..\Code\System\Timer.inl">
       <Filter>Header Files\System</Filter>
     </None>
   </ItemGroup>

@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\Code\Type\ScalarTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Code\System\Timer.tpp" />
+    <None Include="..\..\Code\System\Timer.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
