@@ -18,3 +18,5 @@ This project is a derivative of [MAGE](https://github.com/matt77hias/MAGE) (whic
 ## Development
 * **Platform**: Windows 10 32 Bit and 64 Bit (Windows API)
 * **Programming Language**: ISO C++ Latest Draft Standard (> C++17)
+
+<p align="center">Copyright © 2016-2024 Matthias Moulin. All Rights Reserved.</p>
